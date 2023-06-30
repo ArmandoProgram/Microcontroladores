@@ -1,0 +1,97 @@
+int pinE1=13;
+int pinI1=12;
+int pinI2=11;
+int pinE2=7;
+int pinI3=6;
+int pinI4=5;
+const int PinTrig=10;
+const int PinEcho=9;
+const float VelSon=34000.0;
+float distancia;
+
+void setup(){
+pinMode(pinE1,OUTPUT);
+pinMode(pinI1,OUTPUT);
+pinMode(pinI2,OUTPUT);
+pinMode(pinE2,OUTPUT);
+pinMode(pinI3,OUTPUT);
+pinMode(pinI4,OUTPUT);
+Serial.begin(9600);
+pinMode(PinEcho,INPUT);
+pinMode(PinTrig,OUTPUT);
+
+}
+
+void adelante(){
+digitalWrite(pinE1,HIGH);
+digitalWrite(pinI1,HIGH);
+digitalWrite(pinI2,LOW);
+digitalWrite(pinE2,HIGH);
+digitalWrite(pinI3,HIGH);
+digitalWrite(pinI4,LOW);
+}
+void atras(){
+digitalWrite(pinE1,HIGH);
+digitalWrite(pinI1,LOW);
+digitalWrite(pinI2,HIGH);
+digitalWrite(pinE2,HIGH);
+digitalWrite(pinI3,LOW);
+digitalWrite(pinI4,HIGH);
+}
+void girarDerecha(){
+digitalWrite(pinE1,HIGH);
+digitalWrite(pinI1,HIGH);
+digitalWrite(pinI2,LOW);
+digitalWrite(pinE2,HIGH);
+digitalWrite(pinI3,LOW);
+digitalWrite(pinI4,HIGH);
+}
+void girarIzquierda(){
+digitalWrite(pinE1,HIGH);
+digitalWrite(pinI1,LOW);
+digitalWrite(pinI2,HIGH);
+digitalWrite(pinE2,HIGH);
+digitalWrite(pinI3,HIGH);
+digitalWrite(pinI4,LOW);
+}
+
+void parar(){
+digitalWrite(pinE1,LOW);
+digitalWrite(pinI1,HIGH);
+digitalWrite(pinI2,LOW);
+digitalWrite(pinE2,LOW);
+digitalWrite(pinI3,HIGH);
+digitalWrite(pinI4,LOW);
+}
+long iniciarTrigger(){
+digitalWrite(PinTrig,LOW);
+delayMicroseconds(200);
+digitalWrite(PinTrig,HIGH);
+delayMicroseconds(100);
+digitalWrite(PinTrig,LOW);
+ unsigned long tiempo= pulseIn(PinEcho,HIGH);
+distancia=tiempo*0.000001*VelSon/2.0;
+return(distancia);
+}
+
+void loop() {
+distancia=iniciarTrigger();
+
+Serial.print(distancia);
+Serial.print("cm");
+Serial.println();
+digitalRead(distancia);
+delay(100);
+
+while(distancia>40)
+{
+  adelante();
+  distancia=iniciarTrigger();
+}
+
+if(distancia<40){
+
+  girarIzquierda();
+  delay(200);
+}
+}

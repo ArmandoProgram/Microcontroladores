@@ -1,0 +1,17 @@
+const int led = 11; //el ánodo del led al pin 11
+const int pot = A0; //el terminal medio del potenciómetro al pin A0
+int brillo; // nos dará el brillo del led (entre 0 y 255)
+void setup() {
+ Serial.begin(9600); //esta sentencia es necesaria para usar la pantalla
+ pinMode(11, OUTPUT); //el pin al que conecto el ánodo del led es de salida
+ //no es necesario declarar que
+ //pues los pines analógicos son de entrada automáticamente
+}
+void loop() {
+ brillo=analogRead(pot)/4; //convertim
+ //(entre 0 y 1023) en el valor de escritura analógi
+//en el led (entre 0 y 255)
+ analogWrite(led,brillo); //encendemos el led con la luminosidad brillo
+ Serial.println(brillo); //sacamos por la pantalla el valor de brillo...
+ delay(100);
+}

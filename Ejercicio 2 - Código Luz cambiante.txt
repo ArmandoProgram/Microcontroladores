@@ -1,0 +1,18 @@
+const int led = 11; //conectaré el ánodo del led al pin 11, que es PMW~
+int i; //usaremos la variable i para contar
+void setup() {
+ pinMode(led, OUTPUT); //el pin al que conecto el ánodo del led es de salida
+ analogWrite(led, 0); //apagamos el led inicialmente
+}
+void loop() {
+ for(i=0;i<=255;i++){
+ analogWrite(led,i); //escribimos en el led el valor i
+ delay(10); //sin este retraso no nos daríamos cuenta de que el led ...
+ //se está encendiendo paulatinamente
+ } //al término del bucle el led pasa
+ for(i=254;i>=1;i--){
+ analogWrite(led,i);
+ delay(10);
+ } //al término del bucle el led pasa
+ //a estar casi totalmente apagado
+} 

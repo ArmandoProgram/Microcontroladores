@@ -1,0 +1,13 @@
+#include <Servo.h> //Carga la librería para trabajar con servos
+Servo servito; //Declaramos un objeto tipo Servo llamado servito
+int angulo; //Esta variable almacena el ángulo que debe girar servito
+int lectura; //Esta variable a
+void setup() {
+ servito.attach(9); //servito está conectado al pin 9
+}
+void loop() {
+ lectura=analogRead(A0);
+ angulo=map(lectura,0,1023,0,179); //calcula angulo a partir de lectura
+ servito.write(angulo); //ordena a se
+ delay(20); //para darle tiempo al servo a ponerse en la posición angulo
+}

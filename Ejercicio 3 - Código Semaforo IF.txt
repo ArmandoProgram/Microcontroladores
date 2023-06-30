@@ -1,0 +1,26 @@
+const int rojo=13; //el ánodo del led rojo irá al pin 13
+const int amarillo=11; //el ánodo del led amarillo irá al pin 11
+const int verde=9; //el ánodo del led verde irá al pin 9
+int retardo=1000; //cada led estará encendido inicialmente 1 s
+void setup() {
+ pinMode(rojo,OUTPUT); //el pin al que va
+ pinMode(amarillo,OUTPUT); //el pin al que va el ánodo del amar es de salida
+ pinMode(verde,OUTPUT); //el pin al que va el ánodo del verde es de salida
+ digitalWrite(rojo,LOW); //apagamos el led rojo por si est
+ digitalWrite(amarillo,LOW); //apagamos el led amar por si estuviera encendido
+ digitalWrite(verde,LOW); //apagamos el led verde por si estuviera encendido
+}
+void loop() {
+ digitalWrite(rojo,HIGH); //encendemos el led rojo...
+ delay(retardo); //durante el valor de retardo en ms...
+ digitalWrite(rojo,LOW); //y lo apagamos
+ digitalWrite(verde,HIGH); //encendemos el led verde...
+ delay(retardo); //durante el valor de retardo en ms...
+ digitalWrite(verde, LOW); //y lo apagamos
+ digitalWrite(amarillo,HIGH); //encendemos el led amarillo...
+ delay(retardo); //durante 0,5 s...
+ digitalWrite(amarillo,LOW); //y lo apagamos
+ if(retardo>100){
+ retardo=retardo-100;
+ }
+} 

@@ -1,0 +1,30 @@
+const int ledR = 11; //el ánodo
+const int ledG = 9; //el ánodo
+const int ledB = 10; //el ánodo
+const int potR = A2; //el terminal medio del poten rojo al pin A2
+const int potG = A1; //el terminal medio del
+const int potB = A0; //el terminal medio del poten azul al pin A0
+int brilloR; //nos dará la cantidad de
+int brilloG; //nos dará la cantidad de
+int brilloB; //nos dar
+void setup() {
+ Serial.begin(9600); //esta sentencia es necesaria para usar la pantalla
+ pinMode(ledR, OUTPUT);
+ pinMode(ledG, OUTPUT);
+ pinMode(ledB, OUTPUT);
+}
+void loop() {
+ brilloR=analogRead(potR)/4;
+ brilloG=analogRead(potG)/4;
+ brilloB=analogRead(potB)/4;
+ analogWrite(ledR,brilloR);
+ analogWrite(ledG,brilloG);
+ analogWrite(ledB,brilloB);
+ Serial.print("R: ");
+ Serial.print(brilloR);
+ Serial.print(", G: ");
+ Serial.print(brilloG);
+ Serial.print(", B: ");
+ Serial.println(brilloB);
+ delay(100);
+}

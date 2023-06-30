@@ -1,0 +1,21 @@
+int i; //esta variable valdrá para numerar los pines y los leds,...
+ //pues al pin 1 conectaremos el ánodo del led 1 y así.
+void setup() {
+ for(i=1;i<=6;i++){ //vamos a realizar este bucle 6 veces
+ pinMode(i,OUTPUT); //el pin i es de salida
+ digitalWrite(i,LOW); //apagamos el led i en caso de estar e
+ } //al terminar el bucle hemos declarado los pines del 1 al 6 ...
+ //como de salida y hemos apagado los seis leds
+}
+void loop() {
+ for(i=1;i<=6;i++){
+ digitalWrite(i,HIGH); //encendemos el led i ...
+ delay(100); //dura
+ digitalWrite(i,LOW); //y luego lo apagamos
+ } // al terminar el bucle hemos hecho la secuencia de leds 1, 2, ..., 6
+ for(i=5;i>=2;i--){
+ digitalWrite(i,HIGH); //encendemos el led i ...
+ delay(100); //durante 0,1 s ...
+ digitalWrite(i,LOW); //y luego lo apagamos
+ } //al terminar el bucle hemos hecho la secuencia de leds 5, 4, 3, 2.
+}

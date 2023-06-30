@@ -1,0 +1,20 @@
+const int piezo = 13; //piezo al pin 13
+const int led = 9; //ánodo del led al pin 9
+const int puls = 2; //pulsador al pin 2
+void setup() {
+ pinMode(piezo, OUTPUT);
+ pinMode(led, OUTPUT);
+ pinMode(puls, INPUT);
+}
+void loop() {
+ if (digitalRead(puls)==HIGH){
+ for(int i=1;i<=10;i++){
+ tone(piezo,220);
+ digitalWrite(led,HIGH);
+ delay(100);
+ noTone(piezo);
+ digitalWrite(led,LOW);
+ delay(400);
+ }
+ }
+} 

@@ -1,0 +1,10 @@
+const int led=13; //conectaré el ánodo del LED al pin 13
+void setup() {
+pinMode(led,OUTPUT); //declaro el pin al que conectaré el LED como de salida
+}
+void loop() {
+ digitalWrite(led,HIGH); //pongo el pin al que conectaré en LED en alto ...
+ delay(500); //durante medio segundo
+ digitalWrite(led,LOW); //pong
+ delay(1000); //duran
+} 
